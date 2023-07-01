@@ -1,0 +1,1573 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+:root{
+  --light-primary-bg-colour: hsl(291, 100%, 97%);
+  --primary-bg-colour: hsl(291, 100%, 88%);
+  --dark-primary-bg-colour: hsl(291, 100%, 70%);
+
+  --secondary-bg-colour: hsl(351, 100%, 88%);
+  --light-secondary-bg-colour: hsl(351, 100%, 95%);
+  --lighter-secondary-bg-colour: hsl(351, 100%, 97%);
+  --dark-secondary-bg-colour: hsl(351, 100%, 70%);
+  --darker-secondary-bg-colour: hsl(351, 100%, 20%);
+
+  --accent-bg-colour: hsl(251, 100%, 90%);
+  --light-accent-bg-colour: hsl(251, 100%, 95%);
+  --lighter-accent-bg-colour: hsl(251, 100%, 97%);
+  --dark-accent-bg-colour: hsl(251, 100%, 75%);
+  --darker-accent-bg-colour: hsl(251, 100%, 20%);
+
+  --primary-text-colour: black;
+  --secondary-text-colour: white;
+
+  --accent-border-colour: hsl(251, 100%, 87%);
+  --dark-accent-border-colour: hsl(251, 100%, 15%);
+  --secondary-border-colour: hsl(351, 100%, 87%);
+  --dark-primary-border-colour: hsl(291, 100%, 87%);
+  --dark-secondary-border-colour: hsl(351, 100%, 60%);
+  --darker-secondary-border-colour: hsl(351, 100%, 15%);
+}
+
+*{
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+*::selection{
+  background: var(--dark-accent-bg-colour);
+  color: var(--secondary-text-colour);
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  background: var(--light-primary-bg-colour);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="password"]{
+  letter-spacing: 0.125rem;
+}
+textarea{
+  resize: none;
+  padding: 0.5rem;
+  font-family: inherit;
+}
+
+
+.loader{
+  width: 20vw;
+  height: 20vw;
+  margin: 5rem auto;
+  background: transparent;
+  border-radius: 100%;
+  border: 20px white solid;
+  border-top: 20px var(--secondary-bg-colour) solid;
+  animation: spin 2s linear infinite;
+}
+.error{
+  text-align: center;
+  position: fixed;
+  top: 0;
+  padding: 2rem 0.5rem;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+  left: 0;
+  transform: translateY(-100%);
+  animation: drop-down-up 5s ease-in-out forwards; 
+  z-index: 998;
+}
+
+.login-form{
+  padding: 2rem;
+  padding-left: 8rem;
+  margin: 0 auto;
+  max-width: 400px;
+  text-align: center;
+}
+.login-form a{
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 2rem;
+}
+.login-form div{
+  display: flex;
+  margin: 1rem 0;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary-bg-colour);
+  padding: 0.25rem 1rem;
+  border: 1px solid var(--secondary-border-colour);
+  border-radius: 0.5rem;
+  position: relative;
+}
+.login-form div.error{
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  background: var(--dark-secondary-bg-colour);
+  font-weight: bold;
+}
+.login-form div input{
+  border: 1px solid var(--secondary-border-colour);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+.login-form div input:focus-within{
+  outline: none;
+  border: 1px solid #eee;
+}
+.login-form div .reveal-password{
+  position: absolute;
+  right: 0;
+  border-radius: 100%;
+  font-size: 0.5rem;
+  background: var(--light-secondary-bg-colour);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: 0.5s ease-out;
+}
+.login-form div .reveal-password:hover{
+  background: var(--light-primary-bg-colour);
+}
+.login-form input[type="submit"]{
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background: var(--dark-secondary-bg-colour);
+  color: var(--secondary-text-colour);
+  border: 1px solid var(--dark-secondary-border-colour);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+.login-form input[type="submit"]:hover{
+  border-color: var(--darker-secondary-border-colour);
+  background: var(--darker-secondary-bg-colour);
+}
+
+.profile{
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(var(--light-accent-bg-colour), var(--accent-bg-colour));
+  border: 1px solid var(--accent-border-colour);
+  border-radius: 0 0 1rem 1rem;
+  padding: 10rem 1rem;
+  box-sizing: border-box;
+  position: relative;
+}
+.profile ul{
+  max-width: 50%;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  transition: 0.5s ease-out;
+  border-color: transparent;
+}
+.profile .public-quizzes li{
+  background: var(--dark-primary-bg-colour);
+  outline: 1px solid var(--dark-primary-border-colour);
+  outline-offset: -5px;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  padding: 1.5rem 1rem;
+}
+.profile .public-quizzes li a{
+  color: var(--secondary-text-colour);
+  text-decoration: none;
+}
+.profile .public-quizzes li a h4{
+  font-size: 2rem;
+}
+.profile .public-quizzes li a p{
+  font-size: 1rem;
+}
+.profile ul.editing{
+  background: #666;
+  border: 1px solid #555;
+  color: var(--secondary-text-colour);
+  border-radius: 1rem;
+  text-align: left;
+}
+.profile ul.editing input{
+  border: 1px solid #555;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  font-size: 1.125rem;
+  margin-left: 0.5rem;
+  transition: 0.5s ease-out;
+}
+.profile ul.editing input:focus-within{
+  outline: none;
+  background: #eaeaea;
+}
+.profile .delete-profile{
+  padding: 0.5rem;
+  cursor: pointer;
+  background: var(--dark-secondary-bg-colour);
+  color: var(--secondary-text-colour);
+  border: 1px solid var(--darker-secondary-border-colour);
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: 0.5rem;
+  transition: 0.5s ease-out;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.profile .delete-profile:hover{
+  background: var(--darker-secondary-bg-colour);
+}
+.profile .edit-profile{
+  background: var(--darker-accent-bg-colour);
+  border: 1px solid var(--dark-accent-border-colour);
+  color: var(--secondary-text-colour);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 1s ease-out;
+}
+.profile .edit-profile:hover{
+  box-shadow: 0 0 50px 10px var(--darker-accent-bg-colour);
+}
+.profile .password-modifier{
+  font-size: 1.25rem;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background: #666;
+  color: var(--secondary-text-colour);
+  border: 1px solid #555;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  animation: fade-in 0.5s ease-out;
+}
+.profile .password-modifier .password-container{
+  display: flex;
+  margin: 0.5rem 0;
+}
+.profile .password-modifier .password-container input{
+  margin-left: 0.5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  padding: 0.25rem 0.5rem;
+  transition: 0.5s ease-out;
+}
+.profile .password-modifier .password-container input:focus-within{
+  outline: none;
+  background: #eaeaea;
+}
+.profile .password-modifier .password-container button{
+  cursor: pointer;
+  padding: 0 0.5rem;
+  background: #aaa;
+}
+.profile .save-changes{
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: limegreen;
+  color: var(--secondary-text-colour);
+  border: 1px solid green;
+  border-radius: 0.5rem;
+  transition: 0.5s ease-out;
+}
+.profile .save-changes:hover{
+  background: green;
+}
+.profile .save-changes:disabled{
+  background: #ccc;
+  color: #666;
+  border: 1px solid #888;
+  cursor: not-allowed;
+}
+.profile .save-changes:disabled:hover{
+  background: #bbb;
+}
+
+nav{
+  width: 17.5%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  background: var(--darker-secondary-bg-colour);
+  color: var(--secondary-text-colour);
+  border-right: 1px solid var(--darker-secondary-bg-colour);
+  padding: 1rem;
+  font-size: 1.5rem;
+  translate: -100%;
+}
+nav.opened{
+  animation: slide-right 0.75s ease forwards;
+}
+nav button{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  padding: 0.8rem 1.4rem;
+  background: white;
+  border: 1px solid var(--darker-secondary-bg-colour);
+  border-left: none;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  cursor: pointer;
+}
+nav button span{
+  font-size: 1.25rem;
+  display: block;
+  transform: rotate(-90deg) scale(1.25, 1);
+}
+nav.opened button span{
+  transition: 0.5s ease-out;
+  rotate: 180deg;
+}
+nav ul{
+  list-style-type: none;
+}
+nav a{
+  color: var(--secondary-text-colour);
+  text-decoration: none;
+  font-size: 2rem;
+  transition: 0.15s ease-out;
+}
+nav a:hover{
+  letter-spacing: 3px;
+  transition: 0.3s ease-out;
+  color: var(--light-primary-bg-colour);
+}
+nav li.login,
+nav li.logout,
+nav li.profile{
+  background: var(--dark-secondary-bg-colour);
+  margin: 1rem 0;
+  padding: 0.25rem;
+  border: 1px solid var(--dark-secondary-border-colour);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.modal-container{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 2rem 2rem;
+  display: grid;
+  place-items: center;
+  animation: fade-in 0.5s ease-out;
+  z-index: 999;
+}
+.modal-container .modal{
+  background: white;
+  width: 45%;
+  height: 30%;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1.5rem;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  position: relative;
+  translate: -25%;
+  animation: slide-right 0.5s ease-out forwards;
+  text-align: center;
+}
+.modal-container .modal .close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #f6f6f6;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  border-top-right-radius: 1rem;
+  border: 1px #eee solid;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+.modal-container .modal .close:hover{
+  background: #d6d6d6;
+  border: 1px solid #ccc solid;
+}
+.modal-container .modal button{
+  background: var(--dark-secondary-bg-colour);
+  color: white;
+  border: 1px solid var(--dark-secondary-border-colour);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+.modal-container .modal button:hover{
+  background: var(--darker-secondary-bg-colour);
+  border: 1px solid var(--darker-secondary-border-colour);
+}
+
+
+main{
+  padding: 2rem;
+  margin-left: 2rem;
+  background: radial-gradient(closest-side, var(--secondary-bg-colour), var(--light-primary-bg-colour));
+}
+main h1{
+  font-size: 2rem;
+  text-decoration: underline;
+  margin-bottom: 2rem;
+}
+main .searched-quiz .quiz{
+  display: block;
+  max-width: 25%;
+  background: var(--dark-accent-bg-colour);
+  border-color: var(--dark-accent-border-colour);
+  outline-color: var(--dark-accent-border-colour);
+  margin: 1rem 0;
+}
+main .searched-quiz .quiz:hover{
+  box-shadow: 0 0 50px var(--darker-accent-bg-colour);
+}
+main .enter-code{
+  font-size: 1.125rem;
+  border-left: 6px solid var(--primary-bg-colour);
+  padding: 0 1rem;
+}
+main .enter-code input{
+  padding: 0.125rem;
+  border: 1px solid var(--dark-primary-border-colour);
+  border-radius: 0.25rem;
+  min-width: 40%;
+}
+main .enter-code button{
+  margin: 1rem;
+  padding: 0.5rem;
+  scale: 1.25;
+  border-radius: 100rem;
+  display: flex;
+  border: 1px solid var(--dark-primary-border-colour);
+  cursor: pointer;
+  background: var(--primary-bg-colour);
+  transition: 0.5s ease-out;
+}
+main .enter-code button:hover{
+  box-shadow: 0 0 50px 8px var(--primary-bg-colour);
+}
+main .enter-code input:focus-within{
+  outline: none;
+}
+main .password-container{
+  animation: slide-right 0.75s 0.25s ease-out forwards;
+  opacity: 0;
+  translate: -10%;
+  max-width: 25%;
+  background: var(--dark-primary-bg-colour);
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  color: var(--secondary-text-colour);
+}
+main .password-container input{
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+main .password-container span{
+  cursor: pointer;
+}
+main .quizzes{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+main .quiz{
+  text-align: center;
+  color: var(--secondary-text-colour);
+  text-decoration: none;
+  background: var(--dark-secondary-bg-colour);
+  border-radius: 1rem;
+  border: 1px solid var(--dark-secondary-border-colour);
+  outline: 1px solid var(--dark-secondary-border-colour);
+  outline-offset: -5px;
+  padding: 2rem 0;
+  transition: 0.5s ease-out;
+}
+main .quiz:hover{
+  box-shadow: 0 0 50px var(--dark-secondary-bg-colour);
+}
+main .quiz h4{
+  font-size: 1.75rem;
+  text-decoration: underline;
+}
+main h2{
+  font-size: 1.5rem;
+}
+main h2 a{
+  color: inherit;
+}
+main .public-quizzes-container{
+  margin: 2rem auto;
+  padding: 1rem 1.5rem;
+  background: radial-gradient(closest-side, var(--light-primary-bg-colour), var(--primary-bg-colour));
+  border: 1px solid var(--dark-primary-border-colour);
+  max-width: 50%;
+  border-radius: 1rem;
+}
+main .quizzes.public{
+  margin: 1rem 0;
+}
+main .quizzes.public .quiz{
+  background: var(--dark-primary-bg-colour);
+  border: none;
+  outline-color: var(--dark-primary-border-colour);
+}
+main .quizzes.public .quiz:hover{
+  box-shadow: 0 0 50px var(--dark-primary-bg-colour);
+}
+main .quizzes.public .quiz .tags{
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+main .quizzes.public .quiz .tags .tag{
+  background: var(--primary-bg-colour);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  color: var(--primary-text-colour);
+}
+
+.add-quiz-form{
+  padding: 2rem;
+  padding-left: 8rem;
+  background: radial-gradient(closest-side, var(--accent-bg-colour), var(--light-primary-bg-colour))
+}
+.add-quiz-form h2{
+  margin-top: 2.5rem;
+  font-size: 1.75rem;
+  text-decoration: underline;
+}
+.add-quiz-form .input-title{
+  background: var(--darker-accent-bg-colour);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--accent-border-colour);
+  max-width: 40%;
+  position: relative;
+  color: var(--secondary-text-colour);
+  font-weight: bold;
+  transition: 0.5s ease-out;
+  margin-bottom: 4rem;
+}
+.add-quiz-form .input-title:hover{
+  box-shadow: 0 0 25px 0px var(--darker-accent-bg-colour);  
+}
+.add-quiz-form .input-title input{
+  border-color: var(--dark-accent-border-colour);
+}
+.add-quiz-form label{
+  font-size: 1.2rem;
+}
+.add-quiz-form input, .add-quiz-form select{
+  font-size: 1rem;
+  padding: 0.2rem 0.35rem;
+  border: 1px solid var(--dark-primary-border-colour);
+  border-radius: 0.5rem;
+  margin-left: 1.5rem;
+  right: 0;
+  transition: background 0.5s ease-out;
+}
+.add-quiz-form select option{
+  background: var(--lighter-accent-bg-colour);
+}
+.add-quiz-form input[type="radio"]{
+  accent-color: var(--dark-primary-border-colour);
+  cursor: pointer;
+}
+.add-quiz-form input:focus{
+  outline: none;
+  background: #fafafa;
+}
+.add-quiz-form .sub-container{
+  background: var(--light-accent-bg-colour);
+  border: 1px var(--accent-border-colour) solid;
+  display: inline-block;
+  margin: 1.25rem 2rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+.add-quiz-form .sub-container input[type="checkbox"]{
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transform: scale(1.25);
+  accent-color: var(--darker-accent-bg-colour);
+}
+.add-quiz-form .add-btn{
+  margin: 1.25rem 2rem;
+  background: var(--dark-accent-bg-colour);
+  border: 1px var(--accent-bg-colour) solid;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+  font-size: 1rem;
+  color: var(--secondary-text-colour);
+}
+.add-quiz-form .add-btn:hover{
+  --dark-accent-bg-colour: hsl(251, 100%, 65%);
+  background: var(--dark-accent-bg-colour);
+  box-shadow: 1px 1px 20px var(--dark-accent-bg-colour);
+}
+.add-quiz-form .question{
+  position: relative;
+  background: var(--accent-bg-colour);
+  padding: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border-top-right-radius: 0;
+  max-width: 60%;
+  transition: 0.5s ease-out;
+}
+.add-quiz-form .question:not(:first-of-type){
+  animation: fade-in 0.5s ease-out;
+}
+.add-quiz-form .question:hover{
+  box-shadow: 10px -3px 25px 0px var(--accent-bg-colour);
+}
+.add-quiz-form .input-container{
+  background: var(--light-accent-bg-colour);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+}
+.add-quiz-form .input-container:last-of-type{
+  margin-bottom: 0rem;
+}
+.add-quiz-form .delete-question{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  padding: 0.35rem;
+  background: var(--darker-accent-bg-colour);
+  color: var(--secondary-text-colour);
+  cursor: pointer;
+  border-bottom-left-radius: 1rem;
+  border: 1px solid var(--dark-accent-border-colour);
+  border-top: none;
+  border-right: none;
+  transition: 1s ease-out;
+}
+.add-quiz-form .delete-question:hover{
+  background: hsl(0, 74%, 59%);
+  border: 1px solid hsl(0, 74%, 50%);
+  border-top: none;
+  border-right: none;
+}
+.add-quiz-form .additional-information-container .sub-container{
+  margin: 0.25rem 1rem;
+  min-width: 70%;
+}
+.add-quiz-form .description{
+  display: flex;
+  width: 0; /* inheriting original width */
+  align-items: center;
+  justify-content: space-between;
+}
+.add-quiz-form .description textarea{
+  border: 1px solid var(--dark-primary-border-colour);
+  border-radius: 1rem;
+}
+.add-quiz-form .description textarea:focus-within{
+  outline: none;
+}
+.add-quiz-form .marks-total,
+.add-quiz-form .pass-mark,
+.add-quiz-form .pass-msg,
+.add-quiz-form .fail-msg{
+  opacity: 0;
+  translate: -5rem;
+  animation: slide-right 0.5s ease-out forwards;
+}
+.add-quiz-form .completion-msg input,
+.add-quiz-form .pass-msg input,
+.add-quiz-form .fail-msg input{
+  width: 50%;
+}
+.add-quiz-form .options-container .sub-container{
+  display: block;
+  background: var(--accent-bg-colour);
+  font-weight: bold;
+}
+.add-quiz-form .options-container .sub-container.quiz-tags,
+.add-quiz-form .options-container .sub-container.max-time{
+  border-width: 5px;
+  animation: fade-in 0.5s ease-out;
+}
+.add-quiz-form .options-container .sub-container.quiz-tags input[type="submit"]{
+  border-radius: 100%;
+  background: var(--light-primary-bg-colour);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+  outline: 2px solid transparent;
+}
+.add-quiz-form .options-container .sub-container.quiz-tags ul{
+  font-size: 1.25rem;
+  background: var(--dark-accent-bg-colour);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  font-weight: normal;
+  border: 1px solid var(--dark-accent-border-colour);
+}
+.add-quiz-form .options-container .sub-container.quiz-tags ul li{
+  position: relative;
+  margin: 0.5rem 1.5rem;
+  max-width: 10%;
+}
+.add-quiz-form .options-container .sub-container.quiz-tags ul li .delete{
+  position: absolute;
+  right: 0;
+  border-radius: 100%;
+  cursor: pointer;
+  background: var(--dark-primary-bg-colour);
+  padding: 0.125rem;
+}
+.add-quiz-form .options-container .sub-container.quiz-tags input[type="submit"]:hover{
+  outline-color: var(--primary-bg-colour);
+}
+.add-quiz-form .submit-btn{
+  padding: 1rem;
+  background: var(--darker-accent-bg-colour);
+  color: var(--secondary-text-colour);
+  font-weight: bold;
+  border: 1px solid var(--darker-accent-border-colour);
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+.add-quiz-form .submit-btn:hover{
+  background: var(--darker-accent-bg-colour);
+  box-shadow: 1px 1px 20px var(--dark-accent-bg-colour);
+}
+
+
+section{
+  position: relative;
+  max-width: 900px;
+  text-align: center;
+  padding: 1.5rem;
+  margin: 0 auto;
+  border-radius: 0 0 2rem 2rem;
+  border: 1px solid var(--secondary-border-colour);
+  border-top: none;
+  background: linear-gradient(var(--light-secondary-bg-colour), var(--secondary-bg-colour));
+  z-index: 1;
+}
+section::before{ /* transitioned gradient adapted from https://keithjgrant.com/posts/2017/07/transitioning-gradients/ */
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(var(--light-accent-bg-colour), var(--accent-bg-colour));
+  border-radius: 0 0 2rem 2rem;
+  border: 3px solid var(--accent-border-colour);
+  border-top: none;
+  z-index: -1;
+  transition: 0.5s linear;
+  opacity: 0;
+}
+section.editing{
+  border: none;
+}
+section.editing::before{
+  opacity: 1;
+}
+section .modify-btns{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 0.25rem;
+  background: var(--secondary-bg-colour);
+  border: 1px solid var(--secondary-border-colour);
+  border-bottom-left-radius: 0.5rem;
+}
+section.editing .modify-btns{
+  animation: bg-change-1 1s linear;
+  background: var(--dark-accent-bg-colour);
+  border: 1px solid var(--accent-border-colour);
+  border-top: none;
+  border-right: none;
+}
+section .modify-btns button{
+  margin: 0 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+section .modify-btns button.edit{
+  background: var(--accent-bg-colour);
+  border: 1px solid var(--accent-border-colour);
+  transition: 1s linear;
+}
+section .modify-btns button.edit:hover{
+  background: var(--dark-accent-bg-colour);
+  box-shadow: 0 0 50px 5px var(--dark-accent-bg-colour);
+  color: white;
+}
+section.editing .modify-btns button.edit{
+  animation: bg-change-2 1s linear;
+  background: var(--light-secondary-bg-colour);
+  border: 1px solid var(--secondary-border-colour);
+}
+section.editing .modify-btns button.edit:hover{
+  background: var(--secondary-bg-colour);
+  box-shadow: 0 0 50px 5px var(--secondary-bg-colour);
+  color: inherit;
+}
+section .modify-btns button.delete{
+  background: var(--dark-secondary-bg-colour);
+  border: 1px solid var(--dark-secondary-border-colour);
+  color: white;
+  transition: 0.5s ease-out;
+}
+section .modify-btns button.delete:hover{
+  background: var(--darker-secondary-bg-colour);
+  border: 1px solid var(--darker-secondary-border-colour);
+  box-shadow: 0 0 50px 5px var(--darker-secondary-bg-colour);
+}
+section h2{
+  text-decoration: underline;
+  font-size: 2.5rem;
+}
+section.editing input.input-title{
+  font-size: 2.5rem;
+  transition: 0.5s ease-out;
+  animation: 1s linear fade-in;
+  text-align: center;
+  border: 1px solid var(--accent-border-colour);
+  border-radius: 0.5rem;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-bg-colour);
+}
+section.editing input.input-title:focus-within{
+  outline: none;
+  background: #eaeaea;
+}
+section .quiz-code{
+  background: var(--secondary-bg-colour);
+  font-size: 1.125rem;
+  padding: 0.25rem 0 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+section .quiz-code .copy-to-clipboard{
+  padding: 0.25rem;
+  border-radius: 100%;
+  cursor: pointer;
+  background: var(--dark-secondary-bg-colour);
+  color: var(--secondary-text-colour);
+  border: 1px solid var(--dark-secondary-border-colour);
+  margin: 0 0.5rem;
+}
+section .viewer{
+  padding: 2rem 0;
+}
+section .viewer .selector{
+  display: flex;
+  max-width: 250px;
+  justify-content: space-between;
+  margin: 2rem auto;
+  background: var(--secondary-bg-colour);
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: 1s linear;
+}
+section .viewer .selector label{
+  padding: 0.25rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+section.editing .viewer .save{
+  padding: 1rem;
+  cursor: pointer;
+  background: limegreen;
+  color: var(--secondary-text-colour);
+  border: 1px solid green;
+  border-radius: 0.5rem;
+  transition: 0.5s ease-out;
+}
+section.editing .viewer .save.disabled{
+  background: #ccc;
+  color: black;
+  border: 1px solid #bbb;
+  cursor: not-allowed;
+}
+section.editing .viewer .save.disabled:hover{
+  background: #bbb;
+}
+section.editing .viewer .save:hover{
+  background: green;
+}
+section.editing .viewer .selector.marked{
+  background: #eee;
+  translate: -40%;
+  opacity: 0;
+  animation: slide-right 0.5s ease-out 0.5s forwards;
+}
+section .viewer .selector.view label{
+  background: var(--light-secondary-bg-colour);
+}
+section.editing .viewer .selector.view label{
+  background: var(--lighter-accent-bg-colour);
+}
+section.editing .viewer .selector.marked label{
+  background: #ccc;
+}
+section .viewer .selector.view label:hover{
+  box-shadow: 0 0 50px 20px var(--secondary-bg-colour);
+}
+section.editing .viewer .selector.view label:hover{
+  box-shadow: 0 0 50px 10px var(--dark-accent-bg-colour);
+}
+section.editing .viewer .selector.marked label:hover{
+  box-shadow: 0 0 50px 10px #ccc;
+}
+section .viewer .selector input{
+  cursor: pointer;
+  accent-color: var(--dark-secondary-bg-colour);
+  transition: 1s linear;
+}
+section .viewer .selector.view input{
+  accent-color: var(--dark-secondary-bg-colour);
+}
+section.editing .viewer .selector.view input{
+  accent-color: var(--dark-accent-bg-colour);
+}
+section.editing .viewer .selector.marked input{
+  accent-color: black;
+}
+section.editing .viewer .questions-container .question-container *{
+  animation: fade-in 0.5s linear;
+}
+section.editing .viewer .questions-container .arrows,
+.add-quiz-form .arrows{
+  position: absolute;
+  left: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+section.editing .viewer .questions-container .arrows .arrow,
+.add-quiz-form .arrows .arrow{
+  background: #fafafa;
+  border: 1px solid #eee;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: 0.5s ease-out;
+}
+section.editing .viewer .questions-container .arrows .arrow:hover,
+.add-quiz-form .arrows .arrow{
+  background: #ddd;
+  border: 1px solid #ccc;
+}
+section.editing .viewer .questions-container .question-container .question{
+  display: flex;
+  justify-content: space-between;
+}
+section .viewer .questions-container .question-container .question .marks{
+  margin-left: 1.5rem;
+  font-weight: bold;
+  flex-basis: 20%;
+}
+section.editing .viewer.creator .questions-container .question-container .question .marks input{
+  width: 12.5%;
+  margin: 0 0.5rem;
+  text-align: center;
+}
+section.editing .viewer.creator .questions-container .question-container .question .additional-question-modifiers{
+  display: flex;
+  border: 1px solid var(--accent-border-colour);
+  border-radius: 0.5rem;
+}
+section.editing .viewer.creator .questions-container .question-container .question .additional-question-modifiers .question-type-dropdown{
+  background: var(--accent-bg-colour);
+  border: 1px solid #f3f3f3;
+  padding: 0.25rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+section.editing .viewer.creator .questions-container .question-container .question .additional-question-modifiers .delete{
+  padding: 0 0.5rem;
+  background: var(--light-secondary-bg-colour);
+  cursor: pointer;
+  border-radius: 0 0.5rem 0.5rem 0;
+  transition: 0.5s ease-out;
+}
+section.editing .viewer.creator .questions-container .question-container .question .additional-question-modifiers .delete:hover{
+  background: var(--secondary-bg-colour);
+}
+section .viewer.creator .questions-container .question-container{
+  font-size: 1.25rem;
+  background: var(--light-secondary-bg-colour);
+  margin: 1rem 0;
+  border: 1px solid var(--secondary-border-colour);
+  border-radius: 0 1rem 1rem 0;
+  text-align: left;
+  padding: 0.5rem;
+  transition: 1s linear;
+}
+section.editing .viewer.creator .questions-container .question-container{
+  background: var(--lighter-accent-bg-colour);
+  border: 1px solid var(--accent-border-colour);
+}
+section .viewer.creator .questions-container .question-container .question{
+  font-weight: bold;
+  letter-spacing: -0.75px;
+}
+section.editing .viewer.creator .questions-container .question-container .question input{
+  margin-left: 0.5rem;
+  background: #f3f3f3;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: 0.5s ease-out;
+  border: 1px solid var(--accent-border-colour);
+}
+section.editing .viewer.creator .questions-container .question-container .question input:focus-within{
+  outline: none;
+  background: var(--accent-bg-colour);
+}
+section .viewer.creator .questions-container .question-container .answer,
+section .viewer.creator .questions-container .question-container .wrong-answers{
+  background: var(--lighter-secondary-bg-colour);
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin: 0.35rem 0;
+  transition: 1s linear;
+}
+section.editing .viewer.creator .questions-container .question-container .answer,
+section.editing .viewer.creator .questions-container .question-container .wrong-answers{
+  background: var(--light-accent-bg-colour);
+}
+section.editing .viewer.creator .questions-container .question-container .answer input,
+section.editing .viewer.creator .questions-container .question-container .wrong-answers input,
+section.editing .viewer.creator .questions-container .question-container .answer select{
+  margin-left: 0.5rem;
+  background: #fafafa;
+  padding: 0.1rem 0.25rem;
+  border-radius: 0.15rem;
+  font-style: italic;
+  transition: 0.5s ease-out;
+  border: 1px solid var(--accent-border-colour);
+}
+section.editing .viewer.creator .questions-container .question-container .answer input:focus-within,
+section.editing .viewer.creator .questions-container .question-container .wrong-answers input:focus-within{
+  outline: none;
+  background: var(--accent-bg-colour);
+}
+section .viewer.creator .questions-container .question-container .wrong-answers p{
+  text-decoration: underline;
+}
+section .viewer.creator .questions-container .question-container .wrong-answers ul{
+  padding: 0.25rem 1rem;
+}
+section.editing .viewer.creator .questions-container .question-container .wrong-answers .delete-wrong-answer{
+  margin-left: 1rem;
+  border-radius: 100%;
+  cursor: pointer;
+  background: var(--light-secondary-bg-colour);
+  border: 1px solid var(--secondary-border-colour);
+  transition: 0.5s ease-out;
+}
+section.editing .viewer.creator .questions-container .question-container .wrong-answers .delete-wrong-answer:hover{
+  background: var(--secondary-bg-colour);
+}
+section.editing .viewer.creator .questions-container .wrong-answers .add-answer{
+  padding: 0.25rem;
+  margin: 0.5rem 1rem;
+}
+section.editing .viewer.creator .questions-container .wrong-answers .add-answer,
+section.editing .viewer.creator .questions-container .add-question{
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+section.editing .viewer.creator .questions-container .add-question{
+  max-width: 15%;
+  padding: 0.5rem;
+  margin: 0 auto;
+}
+section.editing .viewer.creator .questions-container .wrong-answers .add-answer:hover,
+section.editing .viewer.creator .questions-container .add-question:hover{
+  background: #dadada;
+}
+section .viewer.creator .questions-container .additional-information,
+section .viewer.creator .questions-container .statistics{
+  color: var(--secondary-text-colour);
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+  margin: 1.5rem 0;
+  font-size: 1.25rem;
+  transition: 1s linear;
+}
+section .viewer.creator .questions-container .additional-information{
+  background: var(--dark-secondary-bg-colour);
+  border: 1px solid var(--dark-secondary-border-colour);
+}
+section.editing .viewer.creator .questions-container .additional-information{
+  background: #666;
+  border: 1px solid #555;
+}
+section .viewer.creator .questions-container .additional-information h4,
+section .viewer.creator .questions-container .statistics h4{
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+section .viewer.creator .questions-container .additional-information li,
+section .viewer.creator .questions-container .statistics li{
+  margin-left: 2rem;
+  text-align: left;
+}
+section .viewer.creator .questions-container .additional-information li .description{
+  background: var(--light-secondary-bg-colour);
+  margin: 0.25rem 0;
+  color: var(--primary-text-colour);
+  padding: 0.5rem;
+  border: 1px solid var(--secondary-border-colour);
+  border-radius: 0.5rem;
+}
+section.editing .viewer.creator .questions-container .additional-information li{
+  list-style-type: none;
+  padding: 0.25rem 0;
+}
+section.editing .viewer.creator .questions-container .additional-information li div{
+  position: relative;
+}
+section.editing .viewer.creator .questions-container .additional-information li div textarea{
+  width: 100%;
+  display: block;
+  border: 1px solid #555;
+  margin: 0.5rem auto;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  transition: 0.5s ease-out;
+}
+section.editing .viewer.creator .questions-container .additional-information li div textarea:focus-within{
+  outline: none;
+  background: #ddd;
+}
+section.editing .viewer.creator .questions-container .additional-information li div input:not([type="checkbox"]){
+  position: absolute;
+  right: 1rem;
+  width: 50%;
+  border: 1px solid #555;
+  border-radius: 0.5rem;
+  padding: 0.125rem 0.25rem;
+  font-style: italic;
+  translate: -50%;
+  opacity: 0;
+  animation: slide-right 0.5s ease-out forwards;
+  transition: background 0.5s ease-out;
+}
+section.editing .viewer.creator .questions-container .additional-information li.error input{
+  background: var(--dark-secondary-bg-colour);
+  border-color: var(--dark-secondary-border-colour);
+}
+section.editing .viewer.creator .questions-container .additional-information li div input:focus-within{
+  outline: none;
+  background: #ddd;
+}
+section .viewer.creator .questions-container .additional-information .options{
+  margin: 1rem;
+  border: 1px solid var(--secondary-border-colour);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+section .viewer.creator .questions-container .additional-information .options li .tag{
+  background: var(--secondary-bg-colour);
+  margin: 0 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--secondary-border-colour);
+}
+section.editing .viewer.creator .questions-container .additional-information .options{
+  border-color: #aaa;
+}
+section.editing .viewer.creator .questions-container .additional-information .options li ul li{
+  list-style-type: disc;
+  margin-left: 1rem;
+}
+section.editing .viewer.creator .questions-container .additional-information .options li ul li input{
+  border-radius: 0.25rem 0 0 0.25rem;
+  padding: 0.25rem;
+}
+section.editing .viewer.creator .questions-container .additional-information .options li ul li input:focus-within{
+  outline: none;
+}
+section.editing .viewer.creator .questions-container .additional-information .options .add-tag{
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: #eaeaea;
+  transition: 0.5s ease-out;
+  cursor: pointer;
+  border: 1px solid #bababa;
+  margin: 0.5rem 0;
+}
+section.editing .viewer.creator .questions-container .additional-information .options .add-tag:hover{
+  background: #dadada;
+}
+section.editing .viewer.creator .questions-container .additional-information .options ul li button{
+  padding: 0.25rem;
+  border-radius: 0 0.25rem 0.25rem 0;
+  cursor: pointer;
+  background: #ccc;
+}
+section.editing .viewer.creator .questions-container .additional-information .options input[type="checkbox"]{
+  accent-color: #222;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+section .viewer.creator .questions-container .statistics{
+  background: var(--dark-primary-bg-colour);
+  border: 1px solid var(--dark-primary-border-colour);
+}
+section .viewer.creator .questions-container .statistics li{
+  position: relative;
+}
+section .viewer.creator .questions-container .statistics li a{
+  color: var(--secondary-text-colour);
+  font-weight: bold;
+}
+section .viewer.creator .questions-container .statistics li .delete-quiz-response{
+  background: var(--primary-bg-colour);
+  position: absolute;
+  right: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+section .viewer.student .questions-container,
+.answering-quiz .answer-space{
+  background: var(--secondary-text-colour);
+  color: var(--primary-text-colour);
+  text-align: left;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  transition: 0.5s ease-out;
+  position: relative;
+}
+section .viewer.student .questions-container .question-container{
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eaeaea;
+}
+section .viewer.student .questions-container .question-container .question{
+  text-decoration: underline;
+}
+section .viewer.student .questions-container .question-container input{
+  margin: 1rem 0 0 1rem;
+}
+section .viewer.student .questions-container .question-container input:not([type="radio"]){
+  padding: 0.5rem 0.25rem;
+  background: #eee;
+  border-radius: 0.5rem;
+  border: 1px solid #eaeaea;
+  font-size: 0.85rem;
+}
+section .viewer.student .questions-container .question-container label{
+  margin-left: 0.5rem;
+}
+
+.answering-quiz{
+  padding: 2rem 4rem;
+  font-size: 1.125rem;
+  background: linear-gradient(90deg, var(--accent-bg-colour), var(--light-primary-bg-colour));
+}
+.answering-quiz form{
+  margin: 2rem auto;
+  padding: 1rem;
+  border-left: 3px solid var(--accent-border-colour);
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  background: linear-gradient(90deg, var(--light-accent-bg-colour), var(--light-primary-bg-colour));
+}
+.answering-quiz form input{
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  border: 1px solid var(--accent-border-colour);
+}
+.answering-quiz form input[type="submit"]{
+  background: var(--dark-accent-bg-colour);
+  color: var(--secondary-text-colour);
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid var(--dark-accent-border-colour);
+  margin: 0.5rem;
+}
+.answering-quiz form input:focus-within{
+  outline: none;
+  border-width: 2px;
+}
+.answering-quiz form span{
+  padding: 0 0.5rem;
+}
+.answering-quiz form span:hover{
+  cursor: pointer;
+}
+.answering-quiz h2{
+  font-size: 3rem;
+}
+.answering-quiz .description{
+  margin-bottom: 1.5rem;
+}
+.answering-quiz a{
+  color: inherit;
+  font-weight: bold;
+}
+.answering-quiz .start-quiz{
+  padding: 1rem;
+  display: block;
+  background: var(--light-accent-bg-colour);
+  border: 1px solid var(--accent-border-colour);
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  transition: 0.5s ease-out;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.answering-quiz .start-quiz:hover{
+  background: var(--accent-bg-colour)
+}
+.answering-quiz .answer-space{
+  animation: fade-in 1s linear;
+  outline: 5px solid transparent;
+  margin: 1rem 0;
+}
+.answering-quiz .answer-space.flagged{
+  background: var(--light-accent-bg-colour);
+  transition: 0.5s ease-out;
+  outline-color: var(--accent-border-colour);
+  outline-offset: -5px;
+}
+.answering-quiz .answer-space .progress-bar-container{
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  height: 2rem;
+  left: 0;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.answering-quiz .answer-space .flags-container{
+  border-radius: 0.5rem;
+  position: relative;
+  top: -75%;
+}
+.answering-quiz .answer-space .flags-container .flag{
+  animation: fade-in 0.5s ease-out;
+  position: absolute;
+}
+.answering-quiz .answer-space .indicators-container .indicator{
+  position: absolute;
+  background: var(--accent-bg-colour);
+  cursor: pointer;
+  font-size: 1.25rem;
+  top: 12.5%;
+  width: 3px;
+  border-radius: 1rem;
+  height: 75%;
+}
+.answering-quiz .answer-space .progress-bar-container .progress-bar{
+  background: var(--dark-accent-bg-colour);
+  z-index: 20;
+  height: 100%;
+  border-radius: 0.5rem;
+  transition: 0.5s ease-out;
+}
+.answering-quiz .answer-space .question{
+  text-decoration: underline;
+  font-size: 1.5rem;
+}
+.answering-quiz .answer-space .marks{
+  font-size: 1.5rem;
+  margin-left: 2rem;
+  font-weight: bold;
+}
+.answering-quiz .answer-space .answer-input-container input{
+  margin: 1.25rem 0 0 1.5rem;
+}
+.answering-quiz .answer-space .answer-input-container input[type="radio"]{
+  cursor: pointer;
+  accent-color: var(--dark-accent-bg-colour);
+}
+.answering-quiz .answer-space .answer-input-container input:not([type="radio"]){
+  padding: 0.5rem 0.25rem;
+  background: #f7f7f7;
+  border-radius: 0.5rem;
+  border: 1px solid #eaeaea;
+  transition: 0.5s ease-out;
+}
+.answering-quiz .answer-space .answer-input-container input:not([type="radio"]):focus-within{
+  outline: none;
+  background: #eaeaea;
+  border-color: #dadada;
+}
+.answering-quiz .answer-space .answer-input-container label{
+  margin-left: 0.5rem;
+}
+.answering-quiz .answer-space .question-selector{
+  margin: 2rem 0;
+  position: absolute;
+  bottom: 0;
+  right: 0.5rem;
+  display: flex;
+}
+.answering-quiz .answer-space .question-selector button{
+  cursor: pointer;
+  padding: 0.5rem;
+  margin: 0 0.25rem;
+  border: 1px solid var(--accent-border-colour);
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  background: var(--light-accent-bg-colour);
+  transition: 0.5s ease-out;
+}
+.answering-quiz .answer-space.flagged .question-selector button.flagger{
+  box-shadow: 0 0 10px 5px var(--accent-bg-colour);
+  background: var(--dark-accent-bg-colour);
+}
+.answering-quiz .answer-space .question-selector button:hover{
+  background: var(--accent-bg-colour);
+}
+.answering-quiz .answer-space .question-selector button:disabled{
+  cursor: not-allowed;
+  transition: 0.25s ease-out;
+  background: var(--lighter-accent-bg-colour);
+  border-color: #eee;
+}
+.answering-quiz .submit-answers{
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  display: block;
+  padding: 0.5rem;
+  cursor: pointer;
+  background: var(--accent-bg-colour);
+  border: 1px solid var(--accent-border-colour);
+  border-radius: 0.75rem;
+  transition: 0.5s ease-out;
+}
+.answering-quiz .submit-answers:hover{
+  background: var(--dark-accent-bg-colour);
+}
+.answering-quiz .feedback{
+  margin-top: 1rem;
+  background: var(--light-accent-bg-colour);
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  border: 1px solid var(--accent-border-colour);
+  border-radius: 0.5rem;
+  outline: 1px solid var(--accent-border-colour);
+  outline-offset: -5px;
+  translate: -5%;
+  opacity: 0;
+  animation: slide-right 0.5s ease-out forwards;
+  box-shadow: 0 0 50px 10px var(--accent-bg-colour);
+}
+.answering-quiz .feedback .wrong-answer-details{
+  margin: 0.5rem;
+  padding: 1rem 0.75rem;
+  background: rgba(255, 93, 93, 0.1);
+  border: 2px solid var(--dark-secondary-border-colour);
+  border-radius: 0.5rem;
+}
+
+.page-not-found{
+  background: var(--accent-bg-colour);
+  font-size: 1rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  border: 1px solid var(--accent-border-colour);
+  box-sizing: border-box;
+}
+.page-not-found *{
+  display: block;
+}
+.page-not-found p{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.page-not-found svg{
+  width: 50%;
+  height: 100%;
+  margin: 1rem auto;
+}
+.page-not-found a{
+  color: var(--secondary-text-colour);
+  background: var(--dark-accent-bg-colour);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+@keyframes spin{
+  0%{rotate: 0}
+  100%{rotate: 360deg}
+}
+
+@keyframes slide-right{
+  100%{translate: 0; opacity: 1;}
+}
+
+@keyframes drop-down-up{
+  10%{transform: translateY(0)}
+  90%{transform: translateY(0)}
+  100%{transform: translateY(-100%)}
+}
+
+@keyframes fade-in{
+  0%{opacity: 0}
+  100%{opacity: 1;}
+}
+
+@keyframes bg-change-1{
+  0%{background: var(--secondary-bg-colour)}
+  100%{background: var(--dark-accent-bg-colour)}
+}
+@keyframes bg-change-2{
+  0%{background: var(--accent-bg-colour)}
+  100%{background: var(--light-secondary-bg-colour)}
+}
